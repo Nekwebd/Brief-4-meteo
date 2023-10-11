@@ -22,7 +22,7 @@ function App() {
     <div>
       <GetWeather></GetWeather>
       <div className='prevJours'>
-        <h2 className='titreSemaine'>Prevision jours suivants</h2>
+        <h2 className='titreSemaine'>Prévision prochains jours</h2>
         <div className='sectionPrevision'>
             {meteo.daily.time.slice(1).map((day, i) => (
                 <Prevision key={i} time={day} tempMax={meteo.daily.temperature_2m_max[i + 1 ]} 
