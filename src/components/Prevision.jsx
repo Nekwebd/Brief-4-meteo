@@ -1,4 +1,5 @@
 import React from 'react'
+import { TEMP, weatherCodeEmoji, WIND } from "./Emojis";
 
 const Prevision = (props) => {
 
@@ -8,7 +9,7 @@ const Prevision = (props) => {
           <p>{props.time}</p>
         </div>
         <div className='wheaterCode'>
-          <p>{props.weatherCode}</p>
+          <p>{weatherCodeEmoji[props.weatherCode]}</p>
         </div>
         <div className='tempJour'>
           <p>{props.tempMax}°C</p>

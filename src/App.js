@@ -22,10 +22,13 @@ function App() {
     <div>
       <GetWeather></GetWeather>
       <div className='prevJours'>
+        <h2 className='titreSemaine'>Prevision jours suivants</h2>
+        <div className='sectionPrevision'>
             {meteo.daily.time.slice(1).map((day, i) => (
                 <Prevision key={i} time={day} tempMax={meteo.daily.temperature_2m_max[i + 1 ]} 
                 tempUnit={meteo.daily_units.temperature_2m_max} weatherCode={meteo.daily.weathercode[i +1]} className='meteoSemaine'> </Prevision>
             ))}
+            </div>
       </div>
     </div>
   )
