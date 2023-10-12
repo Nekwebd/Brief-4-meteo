@@ -47,7 +47,7 @@ function GetWeather() {
               <p>🌅 Lever de soleil : {formatTime(weather.daily.sunrise[0])}</p>
               <p>🌇 Coucher de soleil : {formatTime(weather.daily.sunset[0])}</p>
               <p>🌡️ Temp max: {weather.daily.temperature_2m_max[0]}°C</p>
-              <p>❄️ Temp max: {weather.daily.temperature_2m_min[0]}°C</p>
+              <p>❄️ Temp min: {weather.daily.temperature_2m_min[0]}°C</p>
               <p>
                 {WIND} : {weather.current.windspeed_10m} km/h
               </p>
