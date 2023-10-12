@@ -12,7 +12,7 @@ function GetWeather() {
         const response = await axios.get(
           "https://api.open-meteo.com/v1/forecast?latitude=50.6942&longitude=3.1746&current=temperature_2m,relativehumidity_2m,apparent_temperature,is_day,weathercode,cloudcover,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,windspeed_10m_max&timezone=auto&hourly=temperature_2m,relativehumidity_2m,weathercode"
         );
-        console.log(response.data);
+        // console.log(response.data);
         setWeather(response.data);
       } catch (error) {
         console.log(error);
@@ -46,9 +46,15 @@ function GetWeather() {
                   {TEMP} : {weather.current.temperature_2m}°C{" "}
                 </p>
               </span>
-              <span className="flex flex-col text-2xl justify-evenly text-center">
-                <p>Lever de soleil : {formatTime(weather.daily.sunrise[0])}</p>
-                <p>Coucher de soleil : {formatTime(weather.daily.sunset[0])}</p>
+              <span className="flex flex-col text-1xl justify-evenly text-center">
+                <p>
+                  🌅 Lever de soleil : {formatTime(weather.daily.sunrise[0])}
+                </p>
+                <p>
+                  🌇 Coucher de soleil : {formatTime(weather.daily.sunset[0])}
+                </p>
+                <p>🌡️ Temp max: {weather.daily.temperature_2m_max[0]}°C</p>
+                <p>❄️ Temp min: {weather.daily.temperature_2m_min[0]}°C</p>
                 <p>
                   {WIND} : {weather.current.windspeed_10m} km/h
                 </p>
