@@ -63,25 +63,6 @@ function GetWeather() {
           </>
         )}
       </div>
-      <div className="bg-gray-100 bg-opacity-50 border-2 border-gray-400 rounded-lg w-5/6 max-w-2xl m-auto mt-10">
-        {weather && weather.hourly && (
-          <>
-            <div id="titre" className="text-center font-bold text-3xl pt-3">
-              Prévisions pour les 12 prochaines heures
-            </div>
-            <div id="card-hour" className="grid grid-cols-12 m-5">
-              <span>
-                <p>{formatTime(weather.hourly.time[0])}</p>
-                <p>{weatherCodeEmoji[weather.hourly.weathercode]}</p>
-              </span>
-              <span>
-                <p>temp</p>
-                <p>humidité</p>
-              </span>
-            </div>
-          </>
-        )}
-      </div>
     </>
   );
 }
