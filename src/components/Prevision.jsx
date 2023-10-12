@@ -1,12 +1,13 @@
 import React from 'react'
 import { TEMP, weatherCodeEmoji, WIND } from "./Emojis";
+import convertirFechaALDia from './date';
 
 const Prevision = (props) => {
 
   return (
       <div className='cardJour'>
         <div className='jour'>
-          <p>{props.time}</p>
+          <p>{convertirFechaALDia(props.time)}</p>
         </div>
         <div className='wheaterCode'>
           <p>{weatherCodeEmoji[props.weatherCode]}</p>
