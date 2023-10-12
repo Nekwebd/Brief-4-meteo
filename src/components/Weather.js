@@ -10,7 +10,7 @@ function GetWeather() {
     async function getApi() {
       try {
         const response = await axios.get(
-          "https://api.open-meteo.com/v1/forecast?latitude=50.6942&longitude=3.1746&current=temperature_2m,relativehumidity_2m,apparent_temperature,is_day,weathercode,cloudcover,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,windspeed_10m_max&timezone=auto"
+          "https://api.open-meteo.com/v1/forecast?latitude=50.6942&longitude=3.1746&current=temperature_2m,relativehumidity_2m,apparent_temperature,is_day,weathercode,cloudcover,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,windspeed_10m_max&timezone=auto&hourly=temperature_2m,relativehumidity_2m,weathercode"
         );
         console.log(response.data);
         setWeather(response.data);
@@ -26,34 +26,57 @@ function GetWeather() {
   }
 
   return (
-    <div className="bg-gray-100 bg-opacity-50 border-2 border-gray-400 rounded-lg w-5/6 max-w-2xl m-auto mt-10">
-      {weather && weather.current && weather.daily && (
-        <>
-          <div id="titre" className="text-center">
-            <h1 className="font-bold text-4xl pt-3">Roubaix</h1>
-            <p>
-              Lat : {weather.latitude} Long : {weather.longitude}
-            </p>
-          </div>
-
-          <div id="card meteo" className="grid grid-cols-2 m-5 ">
-            <span className="flex flex-col justify-evenly">
-              <p className=" text-9xl align-middle text-center border-r-2 border-gray-400">{weatherCodeEmoji[weather.current.weathercode]}</p>
-              <p className=" text-4xl align-middle text-center pt-4 border-r-2 border-gray-400">
-                {TEMP} : {weather.current.temperature_2m}°C{" "}
-              </p>
-            </span>
-            <span className="flex flex-col text-2xl justify-evenly text-center">
-              <p>Lever de soleil : {formatTime(weather.daily.sunrise[0])}</p>
-              <p>Coucher de soleil : {formatTime(weather.daily.sunset[0])}</p>
+    <>
+      <div className="bg-gray-100 bg-opacity-50 border-2 border-gray-400 rounded-lg w-5/6 max-w-2xl m-auto mt-10">
+        {weather && weather.current && weather.daily && (
+          <>
+            <div id="titre" className="text-center">
+              <h1 className="font-bold text-4xl pt-3">Roubaix</h1>
               <p>
-                {WIND} : {weather.current.windspeed_10m} km/h
+                Lat : {weather.latitude} Long : {weather.longitude}
               </p>
-            </span>
-          </div>
-        </>
-      )}
-    </div>
+            </div>
+
+            <div id="card meteo" className="grid grid-cols-2 m-5 ">
+              <span className="flex flex-col justify-evenly">
+                <p className=" text-9xl align-middle text-center border-r-2 border-gray-400">
+                  {weatherCodeEmoji[weather.current.weathercode]}
+                </p>
+                <p className=" text-4xl align-middle text-center pt-4 border-r-2 border-gray-400">
+                  {TEMP} : {weather.current.temperature_2m}°C{" "}
+                </p>
+              </span>
+              <span className="flex flex-col text-2xl justify-evenly text-center">
+                <p>Lever de soleil : {formatTime(weather.daily.sunrise[0])}</p>
+                <p>Coucher de soleil : {formatTime(weather.daily.sunset[0])}</p>
+                <p>
+                  {WIND} : {weather.current.windspeed_10m} km/h
+                </p>
+              </span>
+            </div>
+          </>
+        )}
+      </div>
+      <div className="bg-gray-100 bg-opacity-50 border-2 border-gray-400 rounded-lg w-5/6 max-w-2xl m-auto mt-10">
+        {weather && weather.hourly && (
+          <>
+            <div id="titre" className="text-center font-bold text-3xl pt-3">
+              Prévisions pour les 12 prochaines heures
+            </div>
+            <div id="card-hour" className="grid grid-cols-12 m-5">
+              <span>
+                <p>{formatTime(weather.hourly.time[0])}</p>
+                <p>{weatherCodeEmoji[weather.hourly.weathercode]}</p>
+              </span>
+              <span>
+                <p>temp</p>
+                <p>humidité</p>
+              </span>
+            </div>
+          </>
+        )}
+      </div>
+    </>
   );
 }
 
