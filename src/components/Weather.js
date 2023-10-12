@@ -6,6 +6,8 @@ import formatTime from "./Heure";
 function GetWeather() {
   const [weather, setWeather] = useState({});
 
+  
+
   useEffect(() => {
     async function getApi() {
       try {
@@ -54,6 +56,9 @@ function GetWeather() {
         </>
       )}
     </div>
+
+
+
   );
 }
 
