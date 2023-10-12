@@ -1,3 +1,5 @@
+
+
 function addZero (i) {
     if (i < 10) {
         i = "0" + i;
@@ -12,5 +14,6 @@ function formatTime(heure) {
 
     return `${hours}:${minutes}`
 }
+
 
 export default formatTime;
