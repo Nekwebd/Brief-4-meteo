@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Brief-4-meteo/static/css/main.bd755a15.css",
+    "main.js": "/Brief-4-meteo/static/js/main.aceee603.js",
+    "index.html": "/Brief-4-meteo/index.html",
+    "main.bd755a15.css.map": "/Brief-4-meteo/static/css/main.bd755a15.css.map",
+    "main.aceee603.js.map": "/Brief-4-meteo/static/js/main.aceee603.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bd755a15.css",
+    "static/js/main.aceee603.js"
+  ]
+}
